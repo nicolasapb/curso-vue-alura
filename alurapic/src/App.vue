@@ -19,7 +19,10 @@ export default {
   },
 
   created() {
-    alert('criei o bixo');
+    this.$http.get('http://localhost:3000/v1/fotos')
+    .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
+    .then(fotos => this.fotos = fotos, err => console.log(err))
+    .catch(console.log);
   }
 }
 </script>
