@@ -1,9 +1,16 @@
 <template>
-  <div class="corpo">
-    <h1 class="centralizado">{{ titulo }}</h1>
+  <div class="corpo headerwrap">
+    <h1 class="headerwrap centralizado">{{ titulo }}</h1>
     <ul class="lista-fotos centralizado">
       <li class="lista-fotos-item" v-for="foto of fotos" v-bind:key="foto.id">
-        <img :src="foto.url" :alt="foto.titulo">
+        <div class="painel">
+          <h3 class="headerwrap painel-titulo">{{foto.titulo}}</h3>
+          <div class="painel-corpo">
+
+            <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
+
+          </div><!-- fim painel-corpo -->
+        </div><!-- fim painel -->
       </li>
     </ul>
   </div>
@@ -43,6 +50,39 @@ export default {
     color: #333;
   }
 
+.headerwrap {
+    margin-top: -10px;
+    padding-top: 20px;
+    text-align: center;
+    /* background-attachment: relative;
+    background-position: center center; */
+    /* min-height: 700px;
+    width: 100%; */
+    /* -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+  }
+
+  .headerwrap h1 {
+    /* margin-top: 150px; */
+    /* color: white; */
+    font-size: 70px;
+    font-weight: 700;
+  }
+
+  .headerwrap h3 {
+    color: white;
+    /* font-size: 30px; */
+    font-weight: 100;
+    /* font-family: 'EB Garamond', serif; */
+    /* font-style: oblique; */
+  }
+
   .centralizado {
     text-align: center;
   }
@@ -58,7 +98,40 @@ export default {
   }
 
   .lista-fotos .lista-fotos-item {
+    margin: 2px;
     display: inline-block;
+    /* width: 350px;
+    height: 350px; */
   }
 
+  .imagem-responsiva {
+    width: 100%;
+    height: 100%;
+  }
+
+  .painel {
+    padding: 0 auto;
+    border: solid 3px #333;
+    display: inline-block;
+    /* margin: 0.1px; */
+    /* box-shadow: 5px 5px 10px grey; */
+    /* width: 350px; */
+    /* height: 350px; */
+
+    vertical-align: top;
+    text-align: center;
+  }
+
+  .painel .painel-corpo {
+    width: 350px;
+    height: 350px;
+  }
+  .painel .painel-titulo {
+    text-align: center;
+    border: solid 0.5px #333;
+    background: #333;
+    margin: 0 0 0 0;
+    padding: 10px;
+    text-transform: uppercase;
+  }
 </style>
