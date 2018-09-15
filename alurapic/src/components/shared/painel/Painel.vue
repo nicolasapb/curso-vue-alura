@@ -1,7 +1,10 @@
 <template>
     <div class="painel">
-        <h3 class="painel-titulo">{{foto.titulo}}</h3>
+        <h3 class="painel-titulo">{{ titulo }}</h3>
         <div class="painel-corpo">
+            <slot class="painel-conteudo">
+
+            </slot>
         </div><!-- fim painel-corpo -->
     </div><!-- fim painel -->
 </template>
@@ -9,6 +12,7 @@
 <script>
 export default {
 
+    props: ['titulo']
 }
 </script>
 
