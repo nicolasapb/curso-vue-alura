@@ -14,19 +14,12 @@ export default {
   data() {
     return {
       titulo: 'Alurapic',
-      fotos: [
-        {
-          id: '1',
-          url: 'https://picsum.photos/g/450/450/?image=76',
-          titulo: 'bicicleta'
-        },
-        {
-          id: '2',
-          url: 'https://picsum.photos/g/450/450/?image=83',
-          titulo: 'bosque'
-        }
-      ]
+      fotos: []
     }
+  },
+
+  created() {
+    alert('criei o bixo');
   }
 }
 </script>
