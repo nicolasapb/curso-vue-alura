@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h1>{{ titulo }}</h1>
-    <ul>
-      <li v-for="foto of fotos" v-bind:key="foto.id">
+  <div class="corpo">
+    <h1 class="centralizado">{{ titulo }}</h1>
+    <ul class="lista-fotos centralizado">
+      <li class="lista-fotos-item" v-for="foto of fotos" v-bind:key="foto.id">
         <img :src="foto.url" :alt="foto.titulo">
       </li>
     </ul>
@@ -28,5 +28,37 @@ export default {
 </script>
 
 <style>
+
+  body {
+    background-color: #f2f2f2;
+    font-family: 'EB Garamond', serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    color: #333;
+  }
+
+  .centralizado {
+    text-align: center;
+  }
+
+  .corpo {
+    font-family: Helvetica, sans-serif;
+    margin: 0 auto;
+    width: 96%;
+  }
+
+  .lista-fotos {
+    list-style: none;
+  }
+
+  .lista-fotos .lista-fotos-item {
+    display: inline-block;
+  }
 
 </style>
