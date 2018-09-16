@@ -1,0 +1,84 @@
+<template>
+  <div>
+    <div class="headerwrap">
+        <h1 class="centralizado">{{ titulo }}</h1>
+        <div class="search-box">
+        <font-awesome-icon icon="search" />
+        <input
+            type="search"
+            @input="filtro = $event.target.value"
+            placeholder="procurar"
+            class="filtro">
+        </div>
+    </div>
+
+    <ul class="lista-fotos centralizado">
+      <li
+        class="lista-fotos-item"
+        v-for="foto of fotosComFiltro"
+        :key="foto.id">
+
+        <meu-painel :titulo="foto.titulo">
+            <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
+        </meu-painel>
+
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import Painel from '../shared/painel/Painel.vue';
+import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue';
+
+export default {
+
+  components: {
+    'meu-painel': Painel,
+    'imagem-responsiva': ImagemResponsiva
+  },
+
+  data() {
+    return {
+      titulo: 'Alurapic',
+      fotos: [],
+      filtro: ''
+    }
+  },
+
+  computed: {
+
+    fotosComFiltro() {
+      if(this.filtro) {
+        let exp = new RegExp(this.filtro.trim(), 'i');
+        return this.fotos.filter(foto => exp.test(foto.titulo));
+      } else {
+        return this.fotos;
+      }
+    }
+  },
+
+  created() {
+    this.$http.get('http://localhost:3000/v1/fotos')
+    .then(res => res.ok ? res.json() : Promise.reject(res.statusText))
+    .then(fotos => this.fotos = fotos, err => console.log(err))
+    .catch(console.log);
+  }
+}
+</script>
+
+<style scoped>
+  .lista-fotos {
+    list-style: none;
+  }
+
+  .lista-fotos .lista-fotos-item {
+    margin: 2px;
+    display: inline-block;
+  }
+
+  .filtro {
+
+    width: 400px;
+  }
+</style>
