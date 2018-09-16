@@ -1,11 +1,11 @@
 <template>
     <div class="painel">
         <h3 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h3>
-        <div class="painel-corpo" v-show="visivel">
-            <slot class="painel-conteudo">
-
-            </slot>
-        </div><!-- fim painel-corpo -->
+        <transition name="painel-fade">
+          <div class="painel-corpo" v-show="visivel">
+              <slot></slot>
+          </div><!-- fim painel-corpo -->
+        </transition>
     </div><!-- fim painel -->
 </template>
 
@@ -47,4 +47,13 @@ export default {
     padding: 10px;
     text-transform: uppercase;
   }
+
+  .painel-fade-enter, .painel-fade-leave-active {
+    opacity: 0;
+  }
+
+  .painel-fade-enter-active, .painel-fade-leave-active {
+    transition: opacity 300ms;
+  }
+
 </style>
