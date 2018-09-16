@@ -5,7 +5,7 @@
       <font-awesome-icon icon="search" />
       <input
         type="search"
-        v-on:input="filtro = $event.target.value"
+        @input="filtro = $event.target.value"
         placeholder="procurar"
         class="filtro">
     </div>
@@ -14,7 +14,7 @@
       <li
         class="lista-fotos-item"
         v-for="foto of fotosComFiltro"
-        v-bind:key="foto.id">
+        :key="foto.id">
 
         <meu-painel :titulo="foto.titulo">
             <img
