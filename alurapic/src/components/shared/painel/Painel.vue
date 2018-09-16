@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .painel {
     padding: 0 auto;
     border: solid 3px #333;
