@@ -1,13 +1,14 @@
 <template>
   <div>
     <div class="headerwrap">
-        <h1 class="centralizado">{{ titulo }}</h1>
+        <h1>{{ titulo }}</h1>
+        <h2>{{ subTitulo }}</h2>
         <div class="search-box">
         <font-awesome-icon icon="search" />
         <input
             type="search"
             @input="filtro = $event.target.value"
-            placeholder="procurar"
+            :placeholder="searchText"
             class="filtro">
         </div>
     </div>
@@ -41,6 +42,8 @@ export default {
   data() {
     return {
       titulo: 'Alurapic',
+      subTitulo: 'your timeline',
+      searchText: 'look for...',
       fotos: [],
       filtro: ''
     }
@@ -79,6 +82,8 @@ export default {
 
   .filtro {
     font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.1rem;
     width: 400px;
   }
 </style>

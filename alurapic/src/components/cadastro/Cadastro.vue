@@ -1,7 +1,8 @@
 <template>
     <div>
         <div class="headerwrap">
-            <h2>Cadastro</h2>
+            <h1>{{ titulo }}</h1>
+            <h2>{{ subTitulo }}</h2>
         </div>
     </div>
 </template>
@@ -9,6 +10,12 @@
 <script>
 export default {
 
+ data() {
+    return {
+      titulo: 'Alurapic',
+      subTitulo: 'share with the world'
+    }
+  },
 }
 </script>
 

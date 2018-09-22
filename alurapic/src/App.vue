@@ -1,22 +1,22 @@
 <template>
   <div class="corpo">
-    <nav>
-      <ul>
-          <li v-for="(route, i) in routes" :key="i">
-            <router-link :to="route.path ? route.path : '/'">{{ route.titulo }}</router-link>
-          </li>
-
-      </ul>
-    </nav>
-    <router-view></router-view>
+    <meu-menu :routes="routes"></meu-menu>
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
 
 import { routes } from './routes';
+import Menu from './components/shared/menu/Menu.vue';
 
 export default {
+
+  components: {
+    'meu-menu': Menu
+  },
 
   data() {
     return {
@@ -42,8 +42,12 @@ export default {
     color: #333;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .headerwrap {
-    margin-top: -10px;
+    margin-top: 30px;
     padding-top: 20px;
     text-align: center;
   }
@@ -51,11 +55,15 @@ export default {
   .headerwrap h1 {
     font-size: 70px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.25rem;
   }
 
   .headerwrap h2 {
-    font-size: 50px;
-    font-weight: 500;
+    margin-top: -30px;
+    font-size: 40px;
+    letter-spacing: -0.15rem;
+    text-transform: lowercase;
   }
 
   .headerwrap h3 {
@@ -69,7 +77,16 @@ export default {
 
   .corpo {
     /* font-family: Helvetica, sans-serif; */
-    margin: 0 auto;
-    width: 96%;
+    /* margin: 0 auto;
+    width: 96%; */
+  }
+
+  .pagina-enter, .pagina-leave-active{
+    opacity: 0;
+  }
+
+  .pagina-enter-active, .pagina-leave-active{
+    /* transition: opacity 300ms ease-in; */
+    transition: opacity 300ms;
   }
 </style>
