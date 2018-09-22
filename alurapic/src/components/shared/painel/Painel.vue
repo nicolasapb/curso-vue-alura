@@ -1,8 +1,8 @@
 <template>
     <div class="painel">
-        <div class="headerwrap">
+        <!-- <div class="headerwrap"> -->
           <h3 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h3>
-        </div>
+        <!-- </div> -->
         <transition name="painel-fade">
           <div class="painel-corpo" v-show="visivel">
               <slot></slot>
@@ -44,6 +44,7 @@ export default {
   .painel .painel-titulo {
     text-align: center;
     border: solid 0.5px #333;
+    color: white;
     background: #333;
     margin: 0 0 0 0;
     padding: 10px;

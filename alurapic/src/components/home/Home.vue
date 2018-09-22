@@ -78,7 +78,7 @@ export default {
   }
 
   .filtro {
-
+    font-family: 'Oswald', sans-serif;
     width: 400px;
   }
 </style>

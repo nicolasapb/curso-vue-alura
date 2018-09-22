@@ -1,5 +1,6 @@
 <template>
   <div class="corpo">
+    <router-view></router-view>
   </div>
 </template>
 
@@ -34,6 +35,11 @@ export default {
   .headerwrap h1 {
     font-size: 70px;
     font-weight: 700;
+  }
+
+  .headerwrap h2 {
+    font-size: 50px;
+    font-weight: 500;
   }
 
   .headerwrap h3 {
