@@ -29,16 +29,17 @@ export default {
   .painel {
     padding: 0 auto;
     border: solid 3px #333;
-    display: inline-block;
+    /* display: inline-block; */
     vertical-align: top;
     text-align: center;
     width: 350px;
     height: auto;
+    background: #333;
   }
 
   .painel .painel-corpo {
     width: 350px;
-    height: 350px;
+    height: 100%;
   }
 
   .painel .painel-titulo {
