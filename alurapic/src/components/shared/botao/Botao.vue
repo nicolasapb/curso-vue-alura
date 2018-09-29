@@ -7,7 +7,21 @@
 <script>
 export default {
 
-    props: ['tipo', 'rotulo', 'icone', 'confirmacao', 'estilo'],
+    props: {
+        tipo: {
+            required: true,
+            type: String,
+        },
+
+        rotulo: {
+            required: true,
+            type: String
+        },
+
+        icone: String,
+        confirmacao: Boolean,
+        estilo: String
+    },
 
     methods: {
         disparaAcao() {
