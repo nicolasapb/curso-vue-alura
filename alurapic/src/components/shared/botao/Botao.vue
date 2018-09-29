@@ -1,5 +1,5 @@
 <template>
-    <button  @click="disparaAcao()" class="botao botao-perigo" :type="tipo">
+    <button  @click="disparaAcao()" class="botao" :class="estiloDoBotao" :type="tipo">
         <font-awesome-icon class="botao-icone" :icon="icone"/><p class="botao-texto">{{ rotulo }}</p>
     </button>
 </template>
@@ -7,12 +7,28 @@
 <script>
 export default {
 
-    props: ['tipo', 'rotulo', 'icone'],
+    props: ['tipo', 'rotulo', 'icone', 'confirmacao', 'estilo'],
 
     methods: {
         disparaAcao() {
-            if(confirm('confirma a operação?')) {
-                this.$emit('botaoAtivado');
+            if(this.confirmacao) {
+                if(confirm('confirma a operação?')) {
+                    this.$emit('botaoAtivado');
+                }
+                return;
+            }
+            this.$emit('botaoAtivado');
+        }
+    },
+
+    computed: {
+        estiloDoBotao() {
+
+            if (this.estilo === 'padrao' || !this.estilo) {
+                return 'botao-padrao';
+            }
+            if (this.estilo === 'perigo') {
+                return 'botao-perigo';
             }
         }
     }
@@ -55,6 +71,12 @@ export default {
         border-color: #eea236;
     }
 
+    .botao-padrao {
+        color: #fff;
+        background-color: #008b8b;
+        border-color: #118f8f
+    }
+
     .botao-icone {
         font-size: 0.8em;
     }
@@ -69,8 +91,5 @@ export default {
         margin-left: 4px;
     }
 
-    .botao-padrao {
-        background: darkcyan;
-        color: white;
-    }
+
 </style>
