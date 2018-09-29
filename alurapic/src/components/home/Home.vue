@@ -22,7 +22,7 @@
 
         <meu-painel :titulo="foto.titulo">
             <imagem-responsiva :url="foto.url" :titulo="foto.titulo"/>
-            <meu-botao tipo="button" rotulo="remove" icone="times"/>
+            <meu-botao tipo="button" rotulo="remove" icone="times" @botaoAtivado="remove($event, foto)"/>
         </meu-painel>
        </div>
       </li>
@@ -62,6 +62,12 @@ export default {
       } else {
         return this.fotos;
       }
+    }
+  },
+
+  methods: {
+    remove(foto) {
+      alert(foto.titulo);
     }
   },
 
